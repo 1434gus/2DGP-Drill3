@@ -12,6 +12,14 @@ def boy_draw(x, y):
     delay(0.01)
 
 
+def circle_move(x, y):
+    for d in range(0, 361, 5):
+        rad = math.radians(d)
+        x = 400 + 210 * math.sin(rad)
+        y = 300 + 210 * math.cos(rad)
+        boy_draw(x, y)
+
+
 open_canvas()
 hide_lattice()
 
@@ -19,7 +27,6 @@ grass = load_image('grass.png')
 character = load_image('character.png')
 
 while 1:
-    # 사각이동
     while x < 750:
         x += speed
         boy_draw(x, y)
@@ -29,17 +36,15 @@ while 1:
     while x > 50:
         x -= speed
         boy_draw(x, y)
-        # 원 이동 (중심: 400, 300, 반지름: 210)
         if x == 400 and y == 510:
-            for d in range(0, 361, 5):
-                rad = math.radians(d)
-                x = 400 + 210 * math.sin(rad)
-                y = 300 + 210 * math.cos(rad)
-                boy_draw(x, y)
+            circle_move(x, y)
+
 
     while y != 90:
         y -= speed
         boy_draw(x, y)
+
+
 
 
 
