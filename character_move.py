@@ -19,8 +19,8 @@ def circle_move(x, y):
 
 def triangle_move(x, y):
     point1 = (400, 510)
-    point2 = (700, 210)
-    point3 = (100, 210)
+    point2 = (750, 160)
+    point3 = (50, 160)
     points = [point1, point2, point3, point1]
 
     for px, py in points:
