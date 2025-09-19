@@ -1,5 +1,4 @@
-from pico2d import * # pico2d.open_canvas() 앞에 안붙여도 됨 all 임포트
-
+from pico2d import *
 import math
 x = 400
 y = 90
@@ -13,23 +12,18 @@ def boy_draw(x, y):
 
 def move_rectangle():
     global x, y
-    # 아래 -> 오른쪽
     while x < 750:
         x += speed
         boy_draw(x, y)
-    # 오른쪽 -> 위
     while y < 510:
         y += speed
         boy_draw(x, y)
-    # 위 -> 왼쪽
     while x > 50:
         x -= speed
         boy_draw(x, y)
-    # 왼쪽 -> 아래 (시작점으로)
     while y > 90:
         y -= speed
         boy_draw(x, y)
-    # 마지막에 (400, 510)까지 이동
     while x != 400 or y != 510:
         if x < 400:
             x += speed
@@ -52,7 +46,6 @@ def move_circle():
         x = 400 + 210 * math.sin(rad)
         y = 300 + 210 * math.cos(rad)
         boy_draw(x, y)
-    # 마지막에 (400, 510)까지 이동
     while x != 400 or y != 510:
         if x < 400:
             x += speed
@@ -70,25 +63,21 @@ def move_circle():
 
 def move_triangle():
     global x, y
-    # 꼭짓점1 (400,510) -> 꼭짓점2 (190,180)
     while x > 190 or y > 180:
         if x > 190:
             x -= speed
         if y > 180:
             y -= speed
         boy_draw(x, y)
-    # 꼭짓점2 (190,180) -> 꼭짓점3 (610,180)
     while x < 610:
         x += speed
         boy_draw(x, y)
-    # 꼭짓점3 (610,180) -> 꼭짓점1 (400,510)
     while x > 400 or y < 510:
         if x > 400:
             x -= speed
         if y < 510:
             y += speed
         boy_draw(x, y)
-    # 마지막에 (400, 510)까지 이동 (혹시 오차가 있을 경우 보정)
     while x != 400 or y != 510:
         if x < 400:
             x += speed
